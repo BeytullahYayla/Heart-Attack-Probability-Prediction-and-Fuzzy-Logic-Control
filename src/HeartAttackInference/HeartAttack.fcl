@@ -1,0 +1,58 @@
+FUNCTION_BLOCK HeartAttack
+
+VAR_INPUT
+	sleepDuration:REAL;
+	eatenFattyFood:REAL;
+END_VAR
+
+VAR_OUTPUT
+	heartAttackProbability:REAL;
+END_VAR
+
+FUZZIFY sleepDuration
+	TERM less:= (0,1)(5,1)(6,0);
+	TERM normal:=(5,0)(6,1)(8,1)(9,0);
+	TERM more :=(8,0)(10,1)(12,1);
+END_FUZZIFY
+
+FUZZIFY eatenFattyFood
+
+	TERM rare:=(0,1)(5,1)(9,0);
+	TERM often:=(5,0)(12,1)(19,0);
+	TERM moreOften:=(15,0)(17,1)(30,1);
+
+END_FUZZIFY
+
+DEFUZZIFY heartAttackProbability
+
+	TERM low:=(0,1)(10,1)(20,0);
+	TERM middle:=(15,0)(35,1)(55,0);
+	TERM high:=(50,0)(70,1)(100,1);
+	
+	METHOD:RM;
+	DEFAULT:=0;
+	
+END_DEFUZZIFY
+
+RULEBLOCK ruleBlock1
+	AND:MIN;
+	ACT:MIN;
+	ACCU:MAX;
+	
+	RULE 1:	IF sleepDuration IS less AND eatenFattyFood IS rare THEN heartAttackProbability IS middle;
+	RULE 2:	IF sleepDuration IS less AND eatenFattyFood IS often THEN heartAttackProbability IS middle;
+	RULE 3:	IF sleepDuration IS less AND eatenFattyFood IS moreOften THEN heartAttackProbability IS high;
+	RULE 4:	IF sleepDuration IS normal AND eatenFattyFood IS rare THEN heartAttackProbability IS low;
+	RULE 5:	IF sleepDuration IS normal AND eatenFattyFood IS often THEN heartAttackProbability IS middle;
+	RULE 6:	IF sleepDuration IS normal AND eatenFattyFood IS moreOften THEN heartAttackProbability IS high;
+	RULE 7:	IF sleepDuration IS more AND eatenFattyFood IS rare THEN heartAttackProbability IS low;
+	RULE 8:	IF sleepDuration IS more AND eatenFattyFood IS often THEN heartAttackProbability IS middle;
+	RULE 9:	IF sleepDuration IS more AND eatenFattyFood IS moreOften THEN heartAttackProbability IS high;
+	
+	
+
+END_RULEBLOCK
+
+
+END_FUNCTION_BLOCK
+
