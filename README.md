@@ -10,7 +10,7 @@ Bu projeyle birlikte bulanık mantık ile ilgili temel konularda bilgi sahibi ol
 
 ### 1. Veri Toplama ve Analiz
 
-İlk adım olarak, uyku saati ve yağlı yemek tüketilen gün sayısı gibi değişkenlerin kalp krizi riski üzerindeki etkilerini araştırmak için uygun bir veri seti toplanacak ve analiz edilecektir.
+İlk adım olarak, uyku saati ve yağlı yemek tüketilen gün sayısı gibi değişkenlerin kalp krizi riski üzerindeki etkileri araştırılıp, üyelik fonksiyonlarının sınır değerleri ile ilgili bilgi sahibi olunması amaçlanacaktır.
 
 ### 2. FCL Dilinde Input ve Output Değişkenlerinin Oluşturulması
 
@@ -145,7 +145,7 @@ Her iki yöntem de farklı kullanım durumlarına ve sistem gereksinimlerine gö
 
 
 
-# Referanslar
+## Referanslar
 
 1. **Too Much, Too Little Sleep Linked to Elevated Heart Risks in People Free from Disease**
    - [American College of Cardiology](https://www.acc.org/about-acc/press-releases/2021/05/04/19/47/too-much-too-little-sleep-linked-to-elevated-heart-risks-in-people-free-from-disease)
